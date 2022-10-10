@@ -1,0 +1,36 @@
+<h2 class="text-center text-info"> My Order Page </h2>
+
+<div>
+    <label for=""> Category: </label>
+    <select class="form-select mb-3"  
+           [(ngModel)] = "ParenteslectedCatID"
+           >
+           <option value="0">  ALL </option>
+        <option *ngFor="let cat of catList" [value]="cat.id"> {{cat.name}} </option>
+    </select>
+</div>
+<div> 
+   Selected Category:  {{ParenteslectedCatID}}
+</div>
+
+<div>
+    <h2> Enter Your Name:  </h2>
+    <input type="text" #username class="form-control">    
+</div>
+
+
+<button class="btn btn-info" (click)="completeOrder()"> Complete Order  </button>
+
+
+
+<hr>
+<!-- selectCatID -- child   -->
+<!-- selectedCatID -- parent -->
+<app-products  [selectCatID] = "ParenteslectedCatID"  (totalPriceChanged)="onTotalPriceChanged($event)"> </app-products>
+
+
+<hr>
+
+<h3>The Total Price {{RecivedTotalPrice | currency}} </h3>
+
+

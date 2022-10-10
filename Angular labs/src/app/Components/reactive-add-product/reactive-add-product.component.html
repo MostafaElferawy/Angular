@@ -1,0 +1,40 @@
+<form [formGroup]="addProduct" (ngSubmit)="addProductReactive()">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control"  formControlName="name">
+
+      <!-- {{formControl['name'].errors | json}} -->
+
+      <div  *ngIf="formControl['name'].touched  && formControl['name'].invalid ">
+        <p class="text-danger" *ngIf="formControl['name'].errors?.['required']" >  Name is Required  </p>
+
+        <p class="text-danger"   *ngIf="formControl['name'].errors?.['minlength']">  Name is too short at least 3 chars  </p>
+    </div>
+    
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input type="number" class="form-control" formControlName="price">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Quantity</label>
+        <input type="number" class="form-control" formControlName="quantity">
+    </div>
+
+    <div>
+        <label for=""> Category: </label>
+        <select class="form-select mb-3" formControlName="categoryID">
+            <option *ngFor="let cat of catList" [value]="cat.id"> {{cat.name}} </option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Image </label>
+        <input type="file" class="form-control" name="image" formControlName="imageURL">
+    </div>
+
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>

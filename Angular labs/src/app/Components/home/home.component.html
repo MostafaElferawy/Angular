@@ -1,0 +1,76 @@
+<!-- <p [class] = "myColor">Home Works</p>
+
+<ul>
+    <ng-container *ngFor=" let user of users"  >
+        <div 
+        [ngClass]="{'bg-warning': user.isAdmin}"
+        [ngStyle]="{'color': user.isAdmin ? 'green' : 'red' }"
+
+        > {{user.name}} - {{user.title}} </div>
+    </ng-container>
+</ul>
+
+
+
+<ul>
+    <li *ngFor=" let user of users"  >
+        <div *ngIf="user.isAdmin"> {{user.name}} - {{user.title}} </div>
+    </li>
+</ul>
+
+
+
+
+
+<ul>
+    <li *ngFor="let course of courses; let i = index" > 
+        {{i + 1}} - {{course}} 
+    </li>
+
+</ul>
+
+
+
+
+
+
+
+<img [src]="imgSrc" width="300px" height="200px" >
+
+<h1>{{name}}</h1>
+
+{{userName}}
+
+<button class="btn btn-warning"  (click) = "showAlert()"> Hello  </button>
+
+<input type="text" [(ngModel)]="name">
+
+<ul>
+    <li *ngFor="let student of students"> {{student}} </li>
+
+</ul> -->
+
+<div class="mb-3">
+
+
+<h2 class="text-center text-danger"> Home </h2>
+<img src="assets/download.jpeg" alt="">
+
+
+<button  [disabled]="isUserLoggedSuject" class="btn btn-info" (click)="login()"> Login </button>
+
+
+<button [disabled]="!isUserLoggedSuject" class="btn btn-danger" (click)="logout()"> Logout </button>
+
+
+
+<div infinite-scroll  (scrolled)="onScroll()">  
+<div class="card" style="width: 18rem;" *ngFor="let product of products">
+    <div class="card-body">
+      <h5 class="card-title">{{product.name}}</h5>
+      <img [src]="product.imageURL" > 
+
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>

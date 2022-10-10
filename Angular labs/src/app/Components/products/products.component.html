@@ -1,0 +1,78 @@
+
+<h2 class="text-center text-warning"> Products Page  </h2>
+
+ <a class="btn btn-warning" [routerLink]="['/product/add']">  
+    Go To Create Product Page
+</a> 
+
+
+<a class="btn btn-danger" [routerLink]="['/product/radd']">  
+    Go To Create Reactive Product Page
+</a> 
+
+<div>
+    Order Date:   {{orderDate | date : 'longDate' }}
+  </div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Image</td>
+            <td>Quantity</td>
+            <!-- <td>Category</td> -->
+            <td>Price in USD</td>
+            <td>Price in EGP</td>
+            <td>Details</td>
+
+            <td> Count </td>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- selectedCatID = 1   prd.catId ==>  -->
+        <!-- [class.d-none] = "selectedCatID != prd.categoryID"  -->
+        <tr 
+        *ngFor="let prd of prdFilterCat"
+        [ngClass]="{'bg-danger': prd.quantity == 0}">
+            <td> {{prd.id}} </td>
+            <td> {{prd.name}} </td>
+            <td> <img BorderBox="red" DefaultColor="black" [src]="prd.imageURL" > </td>
+            <!-- <td> {{prd.quantity}} </td> -->
+            <td [ngSwitch]="prd.quantity"> 
+                <div *ngSwitchCase="0"> Out Of Stock </div> 
+                <div *ngSwitchCase="1"> Last Item! </div> 
+                <div *ngSwitchCase="2"> Last 2 Items! </div>    
+            </td>
+
+            <!-- <td> {{prd.categoryID}} </td> -->
+            <td> {{prd.price | currency}} </td>
+            <td> {{prd.price | uSDtoEGP | currency: "EGP"}} </td>
+
+
+            <!--  Template Varaible  -->
+            <!-- #TemplateVaraible  to hold input  -->
+            <!-- <td> <button class="btn btn-warning" (click)="prodDetails(prd.id)">  
+                Details 
+            </button> </td> -->
+
+
+            <td> <a class="btn btn-warning" [routerLink]="['/products' , prd.id]">  
+                Details 
+            </a> </td>
+
+
+            <td> <input #itemCount  type="number" class="form-control"> </td>
+            <td> <button class="btn btn-info" 
+                 (click)="buy(prd.price, itemCount.value)">  
+                Buy 
+            </button> </td>
+
+            
+
+
+        </tr>
+    </tbody>
+
+    <!-- <div>The Total Price = {{totalPrice}} </div> -->
+
+</table>

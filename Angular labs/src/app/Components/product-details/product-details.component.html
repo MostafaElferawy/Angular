@@ -1,0 +1,16 @@
+
+
+<div class="card" style="width: 18rem;">
+    <img [src]="prdDetails?.imageURL" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{prdDetails?.name}}</h5>
+      <p class="card-text"> Price: {{prdDetails?.price}}</p>
+      <p class="card-text"> Quantity: {{prdDetails?.quantity}}</p>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button [disabled]="currentProId==prdlistId[0]" type="button" class="btn btn-warning" (click)="goPrev()" >Previous</button>
+        <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
+        <button [disabled]="currentProId==prdlistId[prdlistId.length-1]" type="button" class="btn btn-info" (click)="goNext()">Next</button>
+      </div>
+      <!-- <button  class="btn btn-primary"  (click)="goBack()">Back</button> -->
+    </div>
+  </div>
